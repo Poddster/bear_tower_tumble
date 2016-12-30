@@ -27,7 +27,7 @@ def Toppleable():
 
 def Material():
     # probably just need mass (for 1m**3).
-    mass
+    mass = None
 
 def Bear():
     # Bears are a really simple 2-level AABB hierarchies.
@@ -50,6 +50,9 @@ def main(args):
 
     pygame.init()
     screen_surface = pygame.display.set_mode((640, 480))
+
+    bear_sprite = pygame.image.load("assets/crap_ti_bear.png").convert_alpha()
+
     pygame.display.set_caption('Hello World')
     while True:
         for event in pygame.event.get():
@@ -58,7 +61,11 @@ def main(args):
                             event.type == KEYUP and event.key == K_ESCAPE):
                 pygame.quit()
                 return
-        pygame.display.update()
+
+        screen_surface.fill((100, 149, 237))
+        sprite_pos = (0, 0)
+        screen_surface.blit(bear_sprite, sprite_pos)
+        pygame.display.flip()
 
 
 def _main_setup_log(args):
